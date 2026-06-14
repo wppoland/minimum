@@ -83,21 +83,7 @@ final class RulesRepository {
 			}
 		}
 
-		/**
-		 * Filter the resolved constraints for a product. PRO uses this to layer
-		 * role-based or schedule-based overrides.
-		 *
-		 * @param array{min: int, max: int, step: int} $effective  Resolved constraints.
-		 * @param int                                  $product_id The product ID.
-		 */
-		return apply_filters( 'minimum/product_constraints', $effective, $product_id );
-	}
-
-	/**
-	 * Whether any quantity rules exist at all (used to short-circuit).
-	 */
-	public function has_quantity_rules(): bool {
-		return array() !== $this->settings->rules();
+		return $effective;
 	}
 
 	/**

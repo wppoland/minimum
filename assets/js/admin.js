@@ -148,31 +148,4 @@
 			reflectScope( row );
 		}
 	);
-
-	// Tooltip fallback for browsers without the Popover API.
-	if ( ! ( 'popover' in HTMLElement.prototype ) ) {
-		Array.prototype.forEach.call(
-			document.querySelectorAll( '.minimum-help' ),
-			function ( btn ) {
-				var id = btn.getAttribute( 'aria-describedby' );
-				var tip = id ? document.getElementById( id ) : null;
-				if ( tip ) {
-					btn.setAttribute( 'title', tip.textContent || '' );
-				}
-			}
-		);
-	} else {
-		Array.prototype.forEach.call(
-			document.querySelectorAll( '.minimum-help' ),
-			function ( btn ) {
-				var id = btn.getAttribute( 'aria-describedby' );
-				btn.addEventListener( 'click', function () {
-					var tip = id ? document.getElementById( id ) : null;
-					if ( tip && typeof tip.togglePopover === 'function' ) {
-						tip.togglePopover();
-					}
-				} );
-			}
-		);
-	}
 } )();

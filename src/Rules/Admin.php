@@ -145,8 +145,6 @@ final class Admin implements HasHooks {
 					'minLabel'    => __( 'Min', 'minimum' ),
 					'maxLabel'    => __( 'Max', 'minimum' ),
 					'stepLabel'   => __( 'Step', 'minimum' ),
-					'globalHint'  => __( 'Applies to every product.', 'minimum' ),
-					'idHint'      => __( 'Enter the product ID or category ID this rule targets.', 'minimum' ),
 				),
 			),
 		);
@@ -162,25 +160,6 @@ final class Admin implements HasHooks {
 			'global'   => __( 'All products (global)', 'minimum' ),
 			'product'  => __( 'Specific product', 'minimum' ),
 			'category' => __( 'Product category', 'minimum' ),
-		);
-	}
-
-	/**
-	 * Render an accessible inline help affordance paired with a tooltip.
-	 *
-	 * @param string $id   Unique tooltip id.
-	 * @param string $text Help text.
-	 */
-	private function help_icon( string $id, string $text ): void {
-		printf(
-			'<button type="button" class="minimum-help" aria-describedby="%1$s" aria-label="%2$s">?</button>',
-			esc_attr( $id ),
-			esc_attr__( 'More information', 'minimum' ),
-		);
-		printf(
-			'<span id="%1$s" class="minimum-tip" role="tooltip" popover="auto">%2$s</span>',
-			esc_attr( $id ),
-			esc_html( $text ),
 		);
 	}
 
@@ -221,12 +200,7 @@ final class Admin implements HasHooks {
 									/>
 									<?php esc_html_e( 'Enforce quantity and order-total rules.', 'minimum' ); ?>
 								</label>
-								<?php
-								$this->help_icon(
-									'minimum-tip-enabled',
-									__( 'Master switch. Turn this off to keep your rules saved but stop enforcing them at the cart and checkout.', 'minimum' ),
-								);
-								?>
+								<p class="description"><?php esc_html_e( 'Master switch. Turn this off to keep your rules saved but stop enforcing them at the cart and checkout.', 'minimum' ); ?></p>
 							</td>
 						</tr>
 
@@ -245,13 +219,7 @@ final class Admin implements HasHooks {
 									class="small-text"
 								/>
 								<span class="minimum-currency"><?php echo esc_html( $this->currency_symbol() ); ?></span>
-								<?php
-								$this->help_icon(
-									'minimum-tip-total',
-									__( 'The smallest cart subtotal a customer can check out with. Set to 0 to disable the order-total rule.', 'minimum' ),
-								);
-								?>
-								<p class="description"><?php esc_html_e( 'Customers cannot check out below this subtotal. Use 0 for no minimum.', 'minimum' ); ?></p>
+								<p class="description"><?php esc_html_e( 'The smallest cart subtotal a customer can check out with. Set to 0 to disable the order-total rule.', 'minimum' ); ?></p>
 							</td>
 						</tr>
 					</tbody>

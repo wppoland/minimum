@@ -28,7 +28,7 @@ Minimum lets you control how much of each product customers must buy — and how
 * **Rule precedence that makes sense.** A specific product rule overrides a category rule, which overrides the global rule — per constraint.
 * **Enforced where it matters.** Validation runs on add-to-cart, in the cart, and at checkout, covering both the classic and block-based cart/checkout.
 * **HPOS and Cart/Checkout Blocks compatible.** No reliance on legacy WooCommerce internals.
-* **Accessible admin.** A modern, dark-mode-aware settings screen with inline help, keyboard support and screen-reader text.
+* **Accessible admin.** A modern, dark-mode-aware settings screen with keyboard support and screen-reader text.
 * **Clean uninstall.** No custom tables. Remove the plugin and your database is exactly as it was.
 * **Self-contained.** No third-party runtime dependencies.
 

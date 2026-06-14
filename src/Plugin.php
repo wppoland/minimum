@@ -3,8 +3,7 @@
  * Main plugin class.
  *
  * Wires the DI container and boots every HasHooks service listed in
- * config/hooks.php, then fires the `minimum/booted` action so that add-ons
- * can extend without modifying core files.
+ * config/hooks.php.
  *
  * @package Minimum
  */
@@ -46,8 +45,8 @@ final class Plugin {
 	/**
 	 * Private constructor — use Plugin::instance().
 	 *
-	 * Service factories are registered eagerly so that activation hooks and
-	 * add-ons never encounter an empty container.
+	 * Service factories are registered eagerly so that activation hooks never
+	 * encounter an empty container.
 	 */
 	private function __construct() {
 		$this->container = new Container();
@@ -112,15 +111,5 @@ final class Plugin {
 				$service->registerHooks();
 			}
 		}
-
-		/**
-		 * Fires after Minimum has fully booted.
-		 *
-		 * Minimum PRO hooks onto this action to extend without modifying core files.
-		 *
-		 * @since 0.1.0
-		 * @param Plugin $plugin The booted plugin instance.
-		 */
-		do_action( 'minimum/booted', $this );
 	}
 }
